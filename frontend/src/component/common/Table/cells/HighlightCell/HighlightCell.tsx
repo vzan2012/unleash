@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { Highlighter } from 'component/common/Highlighter/Highlighter';
 import { useSearchHighlightContext } from 'component/common/Table/SearchHighlightContext/SearchHighlightContext';
 import { Box, Typography } from '@mui/material';
@@ -10,9 +10,10 @@ interface IHighlightCellProps {
     subtitle?: string;
 }
 
-export const HighlightCell: VFC<IHighlightCellProps> = ({
+export const HighlightCell: FC<IHighlightCellProps> = ({
     value,
     subtitle,
+    children,
 }) => {
     const { searchQuery } = useSearchHighlightContext();
     const { classes } = useStyles();
@@ -21,10 +22,10 @@ export const HighlightCell: VFC<IHighlightCellProps> = ({
         <Box className={classes.container}>
             <span
                 className={classes.title}
-                style={{
-                    WebkitLineClamp: Boolean(subtitle) ? 1 : 2,
-                    lineClamp: Boolean(subtitle) ? 1 : 2,
-                }}
+                // style={{
+                //     WebkitLineClamp: Boolean(subtitle) ? 3 : 2,
+                //     lineClamp: Boolean(subtitle) ? 3 : 2,
+                // }}
                 data-loading
             >
                 <Highlighter search={searchQuery}>{value}</Highlighter>

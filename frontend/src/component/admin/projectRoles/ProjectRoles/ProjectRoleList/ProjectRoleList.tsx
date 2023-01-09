@@ -79,10 +79,13 @@ const ProjectRoleList = () => {
             {
                 Header: 'Project role',
                 accessor: 'name',
-            },
-            {
-                Header: 'Description',
-                accessor: 'description',
+                Cell: ({
+                    row: {
+                        original: { name, description },
+                    },
+                }: any) => (
+                    <HighlightCell value={name} subtitle={description} />
+                ),
                 width: '90%',
             },
             {
