@@ -75,6 +75,7 @@ export class OpenApiService {
 
         if (errors) {
             this.logger.debug('Invalid response:', errors);
+            throw new Error('Invalid response');
         }
 
         Object.entries(headers).forEach(([header, value]) =>
