@@ -11,5 +11,6 @@ export interface IEventStore extends Store<IEvent, number>, EventEmitter {
     count(): Promise<number>;
     filteredCount(search: SearchEventsSchema): Promise<number>;
     searchEvents(search: SearchEventsSchema): Promise<IEvent[]>;
+    getMaxRevisionId(currentMax?: number): Promise<number>;
     query(operations: IQueryOperations[]): Promise<IEvent[]>;
 }

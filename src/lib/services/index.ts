@@ -40,7 +40,11 @@ import { InstanceStatsService } from './instance-stats-service';
 import { FavoritesService } from './favorites-service';
 import MaintenanceService from './maintenance-service';
 import ExportImportService from './export-import-service';
-import { hoursToMilliseconds, minutesToMilliseconds } from 'date-fns';
+import {
+    hoursToMilliseconds,
+    minutesToMilliseconds,
+    secondsToMilliseconds,
+} from 'date-fns';
 import { AccountService } from './account-service';
 import { SchedulerService } from './scheduler-service';
 
@@ -56,6 +60,7 @@ export const scheduleServices = (
         clientInstanceService,
         projectService,
         projectHealthService,
+        eventService,
     } = services;
 
     schedulerService.schedule(
@@ -90,6 +95,11 @@ export const scheduleServices = (
     schedulerService.schedule(
         projectHealthService.setHealthRating.bind(projectHealthService),
         hoursToMilliseconds(1),
+    );
+
+    schedulerService.schedule(
+        eventService.updateMaxRevisionId.bind(eventService),
+        secondsToMilliseconds(1),
     );
 };
 

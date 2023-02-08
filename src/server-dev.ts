@@ -43,6 +43,7 @@ process.nextTick(async () => {
                         featuresExportImport: true,
                         newProjectOverview: true,
                         projectStatusApi: true,
+                        optimal304: true,
                     },
                 },
                 authentication: {
